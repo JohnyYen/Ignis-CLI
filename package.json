@@ -1,20 +1,27 @@
 {
   "name": "ignis-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "A multi-framework template CLI",
   "main": "index.js",
+  "bin": {
+    "ignis": "./bin/ignis.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "keywords": [],
-  "author": "",
+  "author": "Johny A. Pedraza Romero",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.4.1",
     "commander": "^14.0.0",
+    "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "fs-extra": "^11.3.0",
     "inquirer": "^12.6.3",
-    "shelljs": "^0.10.0"
+    "path": "^0.12.7",
+    "shelljs": "^0.10.0",
+    "url": "^0.11.4"
   }
 }
