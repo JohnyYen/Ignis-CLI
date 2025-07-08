@@ -4,22 +4,19 @@
     "templates": [
       { "id": "basic", "description": "Plantilla básica" },
       { "id": "clean-architecture", "description": "Arquitectura limpia" }
-    ],
-    "features": ["payment", "google-auth", "i18n"]
+    ]
   },
   "nestjs": {
     "name": "NestJS",
     "templates": [
       { "id": "basic", "description": "Plantilla básica" },
       { "id": "hexagonal", "description": "Arquitectura hexagonal" }
-    ],
-    "features": ["i18n", "typeorm", "swagger"]
+    ]
   },
   "fastapi": {
     "name": "FastAPI",
     "templates": [
       { "id": "basic", "description": "Plantilla básica" }
-    ],
-    "features": ["email", "jwt-auth"]
+    ]
   }
 }
