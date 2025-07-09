@@ -1,5 +1,8 @@
-function initCLI(){
-  const asciiArt = `
+function initCLI(program){
+
+    program
+    .action(() => {
+        const asciiArt = `
  ██████╗ ███████╗███╗   ███╗
 ██╔═══██╗██╔════╝████╗ ████║
 ██║   ██║█████╗  ██╔████╔██║
@@ -12,6 +15,7 @@ Versión: ${process.env.npm_package_version || '1.0.0'}
 `;
 
   console.log(asciiArt);
+    })
 }
 
 module.exports = initCLI

@@ -1,7 +1,7 @@
-import fs from 'fs-extra';
-import path from 'path';
+const fs = require('fs-extra')
+const path = require('path')
 
-export async function generateProject(templatePath, targetPath) {
+async function generateProject(templatePath, targetPath) {
   if (await fs.pathExists(targetPath)) {
     throw new Error(`La carpeta "${targetPath}" ya existe.`);
   }
@@ -10,3 +10,5 @@ export async function generateProject(templatePath, targetPath) {
 
   console.log(`📁 Copiando desde ${templatePath} a ${targetPath}`);
 }
+
+module.exports = generateProject

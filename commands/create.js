@@ -1,14 +1,16 @@
-import fs from 'fs-extra';
-import inquirer from 'inquirer';
-import path from 'path';
-import { generateProject } from '../utils/generator';
+const fs = require('fs-extra')
+const inq = require('inquirer')
+const path = require('path')
+const generateProject = require('../utils/generator')
 
-export default function createCommand(program) {
+const inquirer = inq.default
+
+function createCommand(program) {
   const frameworksPath = path.resolve(__dirname, '../config/frameworks.json');
   const frameworks = JSON.parse(fs.readFileSync(frameworksPath, 'utf8'));
 
   program
-    .command('create')
+    .command('new')
     .description('Crea un proyecto desde una plantilla')
     .option('-f, --framework <name>', 'Framework del proyecto (ej: react, nestjs)')
     .option('-t, --template <name>', 'Nombre de la plantilla (ej: basic, hexagonal)')
@@ -82,3 +84,6 @@ export default function createCommand(program) {
       }
     });
 }
+
+
+module.exports = createCommand
