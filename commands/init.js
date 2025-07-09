@@ -1,5 +1,6 @@
 function initCLI(program) {
     program
+        .name('ignis')
         .action(() => {
             const asciiArt = `
  ██╗ ██████╗ ███╗   ██╗██╗███████╗     ██████╗██╗     ██╗
