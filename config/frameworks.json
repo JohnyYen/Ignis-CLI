@@ -2,21 +2,21 @@
   "react": {
     "name": "React",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica" },
-      { "id": "clean-architecture", "description": "Arquitectura limpia" }
+      { "id": "basic", "description": "Plantilla básica","repo": "https://github.com/ejemplo/react-basic.git"},
+      { "id": "clean-architecture", "description": "Arquitectura limpia", "repo": "https://github.com/ejemplo/react-basic.git"}
     ]
   },
   "nestjs": {
     "name": "NestJS",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica" },
-      { "id": "hexagonal", "description": "Arquitectura hexagonal" }
+      { "id": "basic", "description": "Plantilla básica", "repo": "https://github.com/ejemplo/react-basic.git"},
+      { "id": "hexagonal", "description": "Arquitectura hexagonal", "repo": "https://github.com/ejemplo/react-basic.git"}
     ]
   },
   "fastapi": {
     "name": "FastAPI",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica" }
+      { "id": "basic", "description": "Plantilla básica", "repo": "https://github.com/ejemplo/react-basic.git"}
     ]
   }
 }

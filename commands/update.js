@@ -5,21 +5,53 @@ const { URL } = require('url');
 async function updateCommand(program) {
     program
         .command('update')
-        .requiredOption('-f, --framework <name>', 'Framework al que pertenece el template (ej: react, nestjs)')
-        .requiredOption('-t, --template <name>', 'Nombre del template a actualizar (ej: basic, clean-architecture)')
-        .requiredOption('-u, --url <url>', 'Nueva URL del repositorio Git del template')
+        .option('-f, --framework <name>', 'Framework al que pertenece el template (ej: react, nestjs)')
+        .option('-t, --template <name>', 'Nombre del template a actualizar (ej: basic, clean-architecture)')
         .option('-d, --desc <description>', 'Nueva descripción para el template')
         .description('Actualiza un template específico con una nueva versión')
         .action(async (options) => {
-            const { framework, template, url, desc } = options;
+            let { framework, template, desc } = options;
             const frameworksPath = path.resolve(__dirname, '../config/frameworks.json');
 
             try {
-                // Validación básica de la URL
-                try {
-                    new URL(url); // Esto lanzará error si la URL no es válida
-                } catch (e) {
-                    throw new Error('La URL proporcionada no es válida');
+                if (!framework) {
+                    const answer = await inq.default.prompt([
+                        {
+                            type: 'select',
+                            name: "framework",
+                            message: "Con que framework vas a trabajar?",
+                            choices: frameworks.map(key => ({
+                                name: `${key}`,
+                                value: key
+                            }))
+                        }
+                    ])
+                    framework = answer.framework
+                }
+                if (!name) {
+                    const answer = await inq.default.prompt([
+                        {
+                            type: 'input',
+                            name: "name",
+                            message: "Dale un nombre a tu template",
+                            default: 'default-template'
+                        }
+                    ])
+
+                    template = answer.name
+                }
+
+                if (!description) {
+                    const answer = await inq.default.prompt([
+                        {
+                            type: 'input',
+                            name: "description",
+                            message: "Dale una descripción a la plantilla",
+                            default: '....'
+                        }
+                    ])
+
+                    desc = answer.name
                 }
 
                 // Leer el archivo frameworks.json

@@ -10,13 +10,14 @@ function createCommand(program) {
   const frameworks = JSON.parse(fs.readFileSync(frameworksPath, 'utf8'));
 
   program
-    .command('new')
+    .command('init')
     .description('Crea un proyecto desde una plantilla')
     .option('-f, --framework <name>', 'Framework del proyecto (ej: react, nestjs)')
     .option('-t, --template <name>', 'Nombre de la plantilla (ej: basic, hexagonal)')
     .option('-n, --name <name>', 'Nombre del proyecto')
+    .option('-p, --path <name>', 'Dirección de donde se va a crear la plantilla', '/.')
     .action(async (options) => {
-      let { framework, template, name } = options;
+      let { framework, template, name, path} = options;
 
       // 1. Seleccionar framework si no se provee
       if (!framework) {
@@ -74,7 +75,7 @@ function createCommand(program) {
       }
 
       const templatePath = path.resolve(`./templates/${framework}/${template}`);
-      const targetPath = path.resolve(name);
+      const targetPath = path.resolve(path);
 
       try {
         await generateProject(templatePath, targetPath);
