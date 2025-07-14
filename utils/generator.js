@@ -1,5 +1,5 @@
-const fs = require('fs-extra')
-const path = require('path')
+const fs = require("fs-extra");
+const path = require("path");
 
 async function generateProject(templatePath, targetPath) {
   if (await fs.pathExists(targetPath)) {
@@ -11,4 +11,4 @@ async function generateProject(templatePath, targetPath) {
   console.log(`📁 Copiando desde ${templatePath} a ${targetPath}`);
 }
 
-module.exports = generateProject
+module.exports = generateProject;

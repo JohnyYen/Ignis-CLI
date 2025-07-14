@@ -2,7 +2,8 @@ const { cloneTemplate, isValidGitUrl } = require('../utils/helper')
 const path = require('path');
 const fs = require('fs-extra');
 const inq = require('inquirer')
-const { frameworks } = require('../config/index')
+const { frameworks } = require('../config/index');
+const { log } = require('console');
 
 function getCommand(program) {
     program
@@ -15,6 +16,7 @@ function getCommand(program) {
         .action(async (options) => {
             let { url, name, description, framework } = options;
             let valid = true;
+            const targetDir = path.resolve(`./templates/${framework}/${name}`);
             if (!framework) {
                 const answer = await inq.default.prompt([
                     {
@@ -64,7 +66,7 @@ function getCommand(program) {
                     }
                 ])
 
-                name = answer.url
+                url = answer.url                
             }
             if (!isValidGitUrl(url)){
                 console.log(`❌ URL de repositorio inválida: ${url}`);
@@ -76,9 +78,9 @@ function getCommand(program) {
                 await fs.ensureDir(path.dirname(targetDir));
 
                 if (fs.existsSync(targetDir))
-                    console.log(`El template "${template}" ya existe en ${framework}`);
+                    console.log(`El template "${name}" ya existe en ${framework}`);
 
-                console.log(`🔄 Clonando ${repoUrl} a ${targetDir}...`);
+                console.log(`🔄 Clonando ${url} a ${targetDir}...`);
 
                 await cloneTemplate(url, framework, name);
 
