@@ -63,13 +63,17 @@ async function deleteCommand(program) {
               (t) => t.id === template
             );
             if (templateIndex !== -1) {
-              if (data[framework].template.length() === 1) {
+
+              if (data[framework].templates.length === 1) {
                 await fs.removeSync(`./templates/${framework}`);
+                delete data[framework];
               } else {
                 await fs.removeSync(`./templates/${framework}/${template}`);
+                data[framework].templates.splice(templateIndex, 1);
               }
-              data[framework].templates.splice(templateIndex, 1);
+
               await fs.writeJson(frameworksPath, data, { spaces: 2 });
+
               console.log(
                 `✅ Template "${template}" eliminado del framework "${framework}"`
               );
@@ -103,7 +107,7 @@ async function deleteCommand(program) {
           );
         }
       } catch (error) {
-        console.error("❌ Error al procesar la eliminación");
+        console.error(`❌ Error al procesar la eliminación : ${error.message}`);
       }
     });
 }
