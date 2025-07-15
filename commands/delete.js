@@ -63,7 +63,11 @@ async function deleteCommand(program) {
               (t) => t.id === template
             );
             if (templateIndex !== -1) {
-                await fs.removeSync(`./templates/${framework}/${template}`)
+              if (data[framework].template.length() === 1) {
+                await fs.removeSync(`./templates/${framework}`);
+              } else {
+                await fs.removeSync(`./templates/${framework}/${template}`);
+              }
               data[framework].templates.splice(templateIndex, 1);
               await fs.writeJson(frameworksPath, data, { spaces: 2 });
               console.log(

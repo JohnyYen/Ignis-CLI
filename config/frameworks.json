@@ -75,5 +75,15 @@
   "qwen": {
     "name": "QWEN",
     "templates": []
+  },
+  "qwenn": {
+    "name": "QWEnN",
+    "templates": [
+      {
+        "id": "ssdsddsdss",
+        "description": "sdsd",
+        "repo": "https://github.com/JohnyYen/LaTex-Thesis.git"
+      }
+    ]
   }
 }
