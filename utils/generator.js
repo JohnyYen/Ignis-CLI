@@ -2,7 +2,7 @@ const fs = require("fs-extra");
 const path = require("path");
 
 async function generateProject(templatePath, targetPath) {
-  if (await fs.pathExists(targetPath)) {
+  if (!await fs.pathExists(targetPath)) {
     throw new Error(`La carpeta "${targetPath}" ya existe.`);
   }
 

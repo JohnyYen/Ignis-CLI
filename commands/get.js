@@ -1,9 +1,8 @@
-const { cloneTemplate, isValidGitUrl } = require('../utils/helper')
+const { cloneTemplate, isValidGitUrl, writeTemplateInJson } = require('../utils/helper')
 const path = require('path');
 const fs = require('fs-extra');
 const inq = require('inquirer')
 const { frameworks } = require('../config/index');
-const { log } = require('console');
 
 function getCommand(program) {
     program
@@ -16,7 +15,7 @@ function getCommand(program) {
         .action(async (options) => {
             let { url, name, description, framework } = options;
             let valid = true;
-            const targetDir = path.resolve(`./templates/${framework}/${name}`);
+            const targetDir = path.resolve(`./templates/${framework.toLowerCase()}/${name}`);
             if (!framework) {
                 const answer = await inq.default.prompt([
                     {
@@ -82,7 +81,8 @@ function getCommand(program) {
 
                 console.log(`🔄 Clonando ${url} a ${targetDir}...`);
 
-                await cloneTemplate(url, framework, name);
+                await cloneTemplate(url, framework.toLowerCase(), name);
+                await writeTemplateInJson(framework, name, description, url);
 
                 console.log(`✅ Template agregado exitosamente`);
             }

@@ -1,12 +1,12 @@
 const fs = require('fs-extra')
 const inq = require('inquirer')
-const path = require('path')
+const pathResolve = require('path')
 const generateProject = require('../utils/generator')
 
 const inquirer = inq.default
 
 function createCommand(program) {
-  const frameworksPath = path.resolve(__dirname, '../config/frameworks.json');
+  const frameworksPath = pathResolve.resolve(__dirname, '../config/frameworks.json');
   const frameworks = JSON.parse(fs.readFileSync(frameworksPath, 'utf8'));
 
   program
@@ -15,7 +15,6 @@ function createCommand(program) {
     .option('-f, --framework <name>', 'Framework del proyecto (ej: react, nestjs)')
     .option('-t, --template <name>', 'Nombre de la plantilla (ej: basic, hexagonal)')
     .option('-n, --name <name>', 'Nombre del proyecto')
-    .option('-p, --path <name>', 'Dirección de donde se va a crear la plantilla', '/.')
     .action(async (options) => {
       let { framework, template, name, path} = options;
 
@@ -49,7 +48,7 @@ function createCommand(program) {
             name: 'template',
             message: 'Selecciona una plantilla:',
             choices: frameworkConfig.templates.map(t => ({
-              name: t.description,
+              name: t.id,
               value: t.id,
             })),
           },
@@ -74,8 +73,9 @@ function createCommand(program) {
         name = answer.name;
       }
 
-      const templatePath = path.resolve(`./templates/${framework}/${template}`);
-      const targetPath = path.resolve(path);
+      const templatePath = pathResolve.resolve(`./templates/${framework}/${template}`);
+      await fs.mkdir(`./${name}`)
+      const targetPath = pathResolve.resolve(`./${name}`);
 
       try {
         await generateProject(templatePath, targetPath);

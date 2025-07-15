@@ -2,21 +2,78 @@
   "react": {
     "name": "React",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica","repo": "https://github.com/ejemplo/react-basic.git"},
-      { "id": "clean-architecture", "description": "Arquitectura limpia", "repo": "https://github.com/ejemplo/react-basic.git"}
+      {
+        "id": "basic",
+        "description": "Plantilla básica",
+        "repo": "https://github.com/ejemplo/react-basic.git"
+      },
+      {
+        "id": "clean-architecture",
+        "description": "Arquitectura limpia",
+        "repo": "https://github.com/ejemplo/react-basic.git"
+      }
     ]
   },
   "nestjs": {
     "name": "NestJS",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica", "repo": "https://github.com/ejemplo/react-basic.git"},
-      { "id": "hexagonal", "description": "Arquitectura hexagonal", "repo": "https://github.com/ejemplo/react-basic.git"}
+      {
+        "id": "basic",
+        "description": "Plantilla básica",
+        "repo": "https://github.com/ejemplo/react-basic.git"
+      },
+      {
+        "id": "hexagonal",
+        "description": "Arquitectura hexagonal",
+        "repo": "https://github.com/ejemplo/react-basic.git"
+      }
     ]
   },
   "fastapi": {
     "name": "FastAPI",
     "templates": [
-      { "id": "basic", "description": "Plantilla básica", "repo": "https://github.com/ejemplo/react-basic.git"}
+      {
+        "id": "basic",
+        "description": "Plantilla básica",
+        "repo": "https://github.com/ejemplo/react-basic.git"
+      }
     ]
+  },
+  "reactjs": {
+    "name": "ReactJS",
+    "templates": [
+      {
+        "id": "sds",
+        "description": "sdsd",
+        "repo": "https://github.com/JohnyYen/LaTex-Thesis.git"
+      },
+      {
+        "id": "sdsdss",
+        "description": "sdsd",
+        "repo": "https://github.com/JohnyYen/LaTex-Thesis.git"
+      }
+    ]
+  },
+  "vpn": {
+    "name": "vpn",
+    "templates": [
+      {
+        "id": "ssdsddsdss",
+        "description": "sdsd",
+        "repo": "https://github.com/JohnyYen/LaTex-Thesis.git"
+      }
+    ]
+  },
+  "asd": {
+    "name": "ASD",
+    "templates": []
+  },
+  "qwe": {
+    "name": "QWE",
+    "templates": []
+  },
+  "qwen": {
+    "name": "QWEN",
+    "templates": []
   }
 }
