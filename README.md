@@ -1,85 +1,142 @@
-# Ignis CLI - Gestor de Templates de Desarrollo
+# 🐉 Ignis CLI – Herramienta modular para crear proyectos desde plantillas
 
-![Ignis CLI Logo](https://via.placeholder.com/150x50?text=Ignis+CLI)
-*Herramienta para crear y gestionar plantillas de proyectos de desarrollo*
+Ignis CLI es una herramienta de línea de comandos diseñada para ayudarte a **crear proyectos desde plantillas predefinidas**, con soporte para múltiples frameworks como React, NestJS, FastAPI, .NET y más.  
+Es ideal para desarrolladores que quieren **arrancar proyectos rápidamente**, manteniendo consistencia en estructura, configuración y arquitectura.
 
-## 📦 Instalación
+
+## 🧰 Construido con
+
+- **Node.js** + `npm`
+- **commander** – Manejo de comandos y opciones
+- **inquirer** – Preguntas interactivas en consola
+- **fs-extra** – Operaciones avanzadas con archivos y carpetas
+- **path** – Manipulación segura de rutas
+
+
+## 📦 Instalación local
+
+1. **Clona el repositorio:**
 
 ```bash
-npm install -g ignis-cli
+git clone https://github.com/JohnyYen/ignis-cli.git
+cd ignis-cli
 ```
 
-## 🚀 Uso Básico
+2. **Instala dependencias:**
 
 ```bash
-ignis [comando] [opciones]
+npm install
 ```
 
-## 🔧 Comandos Principales
+3. **Enlaza globalmente (para probar el CLI):**
 
-### 1. Crear un nuevo proyecto
 ```bash
-ignis init -f react -t basic -n mi-proyecto
+npm link
 ```
 
-O en modo interactivo:
+Ahora podrás usar el CLI desde cualquier carpeta:
+
 ```bash
-ignis init
+ignis --help
 ```
 
-### 2. Gestionar Templates
-| Comando | Ejemplo | Descripción |
-|---------|---------|-------------|
-| `list`  | `ignis list -t` | Lista todos los frameworks y templates |
-| `add`   | `ignis add -f vue -t admin -u https://repo.com` | Añade un nuevo template |
-| `remove`| `ignis remove -f react -t basic` | Elimina un template |
-| `update`| `ignis update -f nestjs -t api -u https://nuevo-repo.com` | Actualiza un template |
+---
 
-## 📚 Ejemplos Completos
+## 🚀 Comandos principales
 
-### Crear proyecto React con TypeScript
+### 1. `ignis init`
+
+Crea un nuevo proyecto desde una plantilla predefinida.
+
+#### Uso:
 ```bash
-ignis init -f react -t typescript -n mi-app-react --git
+ignis init [opciones]
 ```
 
-### Actualizar template existente
+#### Opciones:
+| Flag | Descripción |
+|------|-------------|
+| `-f`, `--framework <name>` | Selecciona el framework (ej: react, nestjs) |
+| `-t`, `--template <name>` | Selecciona la plantilla (ej: basic, clean-architecture) |
+| `-n`, `--name <name>` | Nombre del proyecto |
+
+
+#### Ejemplo:
 ```bash
-ignis update -f react -t basic -u https://github.com/nuevo-repo.git -d "Nueva versión"
+ignis init -f react -t basic -n mi-app
 ```
 
-### Listar todos los templates disponibles
+Si omites alguna opción, el CLI te hará preguntas interactivas.
+
+---
+
+### 2. `ignis help`
+
+Muestra la ayuda del CLI.
+
+#### Uso:
 ```bash
-ignis list -t
+ignis help
+# o
+ignis --help
+# o
+ignis init --help
 ```
 
-## 🛠️ Configuración
+---
 
-Configura rutas por defecto:
-```bash
-ignis config set templates_path ~/mis-templates
+## 📁 Estructura del proyecto
+
+```
+ignis-cli/
+├── bin/
+│   └── ignis.js            # Punto de entrada del CLI
+├── commands/
+│   └── init.js              # Comando principal para crear proyectos
+├── config/
+│   └── frameworks.json      # Frameworks y sus templates
+├── templates/
+│   └── react/
+│       └── basic/
+│           ├── package.json.ejs
+│           └── README.md.ejs
+├── utils/
+│   └── generator.js         # Copiar y renderizar plantillas
+└── package.json
 ```
 
-## 📄 Estructura de frameworks.json
+---
 
-```json
-{
-  "react": {
-    "name": "React",
-    "templates": [
-      {
-        "id": "basic",
-        "description": "Plantilla básica con React",
-        "repo": "https://github.com/ejemplo/react-basic.git"
-      }
-    ]
-  }
-}
-```
+## 🛠️ Características clave
 
-## 🤝 Contribuir
+- ✅ Soporta múltiples frameworks y plantillas
+- ✅ Permite añadir nuevas funcionalidades fácilmente
+- ✅ Modular y listo para escalar (features, nuevos frameworks, etc.)
+- ✅ Funciona en Windows, macOS y Linux
 
-1. Haz fork del proyecto
-2. Crea tu rama (`git checkout -b feature/nueva-funcion`)
-3. Haz commit de tus cambios (`git commit -am 'Añade nueva función'`)
-4. Haz push a la rama (`git push origin feature/nueva-funcion`)
-5. Abre un Pull Request
+
+## 🧩 Cómo agregar nuevos frameworks y templates
+
+Añade el framework utilizando el comando `ignis add` y respondiendo las preguntas interactivas. Del resto se encargará el cli
+
+
+## 💡 Próximos pasos posibles (extensiones)
+
+- Implementar features dinámicas (`payment`, `auth`, etc.)
+- Publicarlo en NPM para compartirlo
+- Soportar Dockerfile, internacionalización, testing, etc., por plantilla
+
+## 📌 Contribuir
+
+¿Quieres mejorar Ignis CLI? ¡Perfecto!  
+Puedes:
+- Mejorar el sistema de features
+- Crear comandos adicionales
+- Documentar mejoras o errores
+
+
+## 🎉 ¡Listo para empezar!
+
+Con Ignis CLI, puedes **crear proyectos profesionales en segundos**, con **estructuras limpias y personalizables**, sin repetir configuraciones ni copiar manualmente archivos.
+
+Empieza a construir tus propias plantillas y haz que otros también puedan arrancar rápido.
