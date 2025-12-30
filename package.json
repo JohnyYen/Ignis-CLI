@@ -1,5 +1,5 @@
 {
-  "name": "ignis-cli",
+  "name": "ignis-forge",
   "version": "1.0.0",
   "description": "A multi-framework template CLI",
   "main": "index.js",
@@ -23,5 +23,7 @@
     "path": "^0.12.7",
     "shelljs": "^0.10.0",
     "url": "^0.11.4"
+
+    
   }
 }
