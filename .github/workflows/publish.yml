@@ -26,7 +26,6 @@ jobs:
 
       - name: Run tests
         run: npm test
-        if: exists('package.json')
 
       - name: Publish package
         run: npm publish
